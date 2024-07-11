@@ -1,4 +1,4 @@
-# Practica
+# Practica firmă de închirieri casete/DVD-uri audio/video/jocuri
 Partea scrisa a proiectului
 Tema
 Analiza problemei
