@@ -10,35 +10,14 @@ import java.sql.*;
  *
  * @author Skiuileuf
  */
-public class Database {
-    private static Database INSTANCE;
-    
-    private static final String databaseURL = "C:\\Users\\Skiuileuf\\Documents\\Github\\Practica\\Practica\\database.accdb";
+public class Database { 
+    private static final String databaseURL = System.getProperty("user.dir") + "\\database.accdb";
     private static final String databaseProtocol = "jdbc:ucanaccess:///";
     public static final String connUrl = databaseProtocol + databaseURL;
+
     
-    private Connection connection;
-    
-    public Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
+        Connection connection = DriverManager.getConnection(connUrl);
         return connection;
-    }
-    
-    private Database() {
-        String connectionURL = databaseProtocol + databaseURL;
-        
-        try {
-            Connection connection = DriverManager.getConnection(connectionURL);
-            this.connection = connection;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    public static Database getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new Database();
-        }
-        
-        return INSTANCE;
     }
 }

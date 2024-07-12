@@ -4,6 +4,8 @@
 
 package com.tosirom.practica;
 
+import com.tosirom.practica.database.Client;
+import com.tosirom.practica.ui.MainFrame;
 import com.tosirom.practica.database.Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,26 +19,11 @@ import java.sql.Statement;
 public class Practica {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        System.out.println(System.getProperty("user.dir") + "\\database.accdb");
-        System.out.println(Database.connUrl);
+    
+        var a = Client.GetAllClients();
         
-        try {
-                
-            String SQL = "SELECT * FROM Produse";
-            Statement statement = Database.getInstance().getConnection().createStatement();
-            ResultSet result = statement.executeQuery(SQL);
-            
-            while (result.next()) {
-                int id = result.getInt("ID");
-                String fullname = result.getString("Nume");
-                 
-                System.out.println(id + ", " + fullname);
-            }
-            
-        } catch(Exception ex) {
-            ex.printStackTrace();
+        for(int i = 0; i < a.size(); i++) {
+            System.out.println(a.get(i));
         }
 
         MainFrame mf = new MainFrame();
