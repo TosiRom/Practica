@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.tosirom.practica.ui;
+import com.tosirom.practica.database.CheckPassword;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,16 +17,7 @@ public class logare_angajat extends javax.swing.JPanel {
      *
      */
     public logare_angajat() {
-        initComponents();
-         // Set title and default close operation
-        setTitle("Logare");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        // Set the size of the window
-        setSize(400, 300);
-        
-        // Center the window on the screen
-        setLocationRelativeTo(null);
+      
     }
 
     /**
@@ -40,7 +32,7 @@ public class logare_angajat extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        parolaField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("ID");
@@ -53,9 +45,9 @@ public class logare_angajat extends javax.swing.JPanel {
 
         jLabel2.setText("PAROLA");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        parolaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                parolaFieldActionPerformed(evt);
             }
         });
 
@@ -75,7 +67,7 @@ public class logare_angajat extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(parolaField, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -93,16 +85,27 @@ public class logare_angajat extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(parolaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
+
+        int userId = 1; // This should be the actual ID of the user you are checking
+
+        // Call the isPasswordCorrect method
+        boolean isCorrect = CheckPassword.isPasswordCorrect(parolaField, userId);
+
+        if (isCorrect) {
+            System.out.println("Password is correct.");
+        } else {
+            System.out.println("Password is incorrect.");
+        }
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void parolaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parolaFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_parolaFieldActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -114,7 +117,7 @@ public class logare_angajat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField parolaField;
     // End of variables declaration//GEN-END:variables
 
     private void setTitle(String my_Main_Window) {
