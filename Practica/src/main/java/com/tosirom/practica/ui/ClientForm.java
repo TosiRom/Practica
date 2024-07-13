@@ -8,7 +8,6 @@ import com.tosirom.practica.database.Client;
 
 /**
  *
- * @author Skiuileuf
  */
 public class ClientForm extends javax.swing.JPanel {
 

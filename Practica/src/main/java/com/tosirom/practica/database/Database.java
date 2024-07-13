@@ -8,7 +8,6 @@ import java.sql.*;
 
 /**
  *
- * @author Skiuileuf
  */
 public class Database { 
     private static final String databaseURL = System.getProperty("user.dir") + "\\database.accdb";

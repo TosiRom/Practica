@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Skiuileuf
  */
 public class Client {
 

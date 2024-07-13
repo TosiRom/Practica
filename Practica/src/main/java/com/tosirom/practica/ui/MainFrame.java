@@ -13,7 +13,6 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author Skiuileuf
  */
 public class MainFrame extends javax.swing.JFrame {
 

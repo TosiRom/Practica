@@ -11,7 +11,6 @@ import com.tosirom.practica.ui.MainFrame;
 
 /**
  *
- * @author Skiuileuf
  */
 public class Practica {
 
