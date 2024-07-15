@@ -1,16 +1,23 @@
 package com.tosirom.practica.models;
 import com.tosirom.practica.database.Inventar;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class InventarTableModel extends AbstractTableModel {
+public class InventarTableModel  extends AbstractTableModel {
+    protected static String[] COLUMN_NAMES = {"ID", "ID Produs", "Cantitate"};
+    protected static Class[] COLUMN_CLASSES = {Integer.class, Integer.class, Integer.class};        
+    
+    private Set<Integer> selected;
     private List<Inventar> inventar;
-    private final String[] columnNames = {"Nume", "Cantitate", "Pret"};
-
-    public InventarTableModel(List<Inventar> inventar) {
-        this.inventar = inventar;
+    
+    public InventarTableModel() {
+        selected = new TreeSet<>();
+        inventar = new ArrayList<>(25);
     }
-
+    
     @Override
     public int getRowCount() {
         return inventar.size();
@@ -18,26 +25,43 @@ public class InventarTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return columnNames.length;
+        return COLUMN_NAMES.length;
     }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        Inventar item = inventar.get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return item.getNume();
-            case 1:
-                return item.getCantitate();
-            case 2:
-                return item.getPret();
-            default:
-                return null;
-        }
-    }
-
+    
     @Override
     public String getColumnName(int column) {
-        return columnNames[column];
+        return COLUMN_NAMES[column];
     }
+    
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return COLUMN_CLASSES[columnIndex];
+    }
+    
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return false;
+    }
+
+     @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Inventar client = inventar.get(rowIndex);
+        switch (columnIndex) {
+            case 0: return client.ID;
+            case 1: return client.ID_Produs;
+            case 2: return client.Cantitate;
+        }
+        return null;
+    }
+    
+     public void add(Inventar client) {
+        int index = inventar.size();
+        inventar.add(client);
+        fireTableRowsInserted(index, index);
+    }
+
+    public Inventar cardAt(int rowIndex) {
+        return inventar.get(rowIndex);
+    }
+    
 }

@@ -32,7 +32,8 @@ public class Angajati {
         String Prenume,
         String Functie,
         Date Data_Angajare,
-        String Parola
+        String Parola,
+        String Username
     ) {
         this.ID = ID;
         this.Nume = Nume;
@@ -40,6 +41,7 @@ public class Angajati {
         this.Functie = Functie;
         this.Data_Angajare = Data_Angajare;
         this.Parola = Parola;
+        this.Username = Username;
     }
     
     private static Angajati _ReadAngajati(ResultSet result) throws SQLException {
@@ -51,7 +53,7 @@ public class Angajati {
         String parola = result.getString("Parola");
         String username = result.getString("Username");
                 
-        Angajati a = new Angajati(id, nume, prenume, functie, data_angajare, parola);
+        Angajati a = new Angajati(id, nume, prenume, functie, data_angajare, parola, username);
         return a;
     }
     

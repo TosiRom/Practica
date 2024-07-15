@@ -56,11 +56,11 @@ public class Produse {
         return p;
     }
     
-    public static ArrayList<Produse> GetAllProduse(String tableName) {
+    public static ArrayList<Produse> GetAllProduse() {
         ArrayList<Produse> produseList = new ArrayList<>();
         
         try(Connection conn = Database.getConnection()) {
-            String SQL = "SELECT * FROM " + tableName;
+            String SQL = "SELECT * FROM Produse";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(SQL);
             
@@ -74,11 +74,11 @@ public class Produse {
         return produseList;
     }
     
-    public static Produse GetProduseById(String tableName, int id) {
+    public static Produse GetProduseById(int id) {
         Produse p = new Produse();
         
         try(Connection conn = Database.getConnection()) {
-            String SQL = "SELECT * FROM " + tableName + " WHERE ID = " + id;
+            String SQL = "SELECT * FROM Produse WHERE ID = " + id;
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(SQL);
             
