@@ -23,6 +23,7 @@ public class Angajati {
     public String Functie;
     public Date Data_Angajare;
     public String Parola;
+    public String Username;
     
     public Angajati() {}
     public Angajati( 
@@ -48,6 +49,7 @@ public class Angajati {
         String functie = result.getString("Functie");
         Date data_angajare = result.getDate("Data_Angajare");
         String parola = result.getString("Parola");
+        String username = result.getString("Username");
                 
         Angajati a = new Angajati(id, nume, prenume, functie, data_angajare, parola);
         return a;
@@ -88,6 +90,25 @@ public class Angajati {
         }
         
         return a;
+    }
+    
+    public static boolean CheckEmployeeUsernameAndPassword(String user, String pass) {
+         try(Connection conn = Database.getConnection()) {
+            String SQL = "SELECT Parola FROM Angajati WHERE Username = '" + user + "'";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(SQL);
+            
+            if (result.next()) {
+                String password = result.getString("Parola");
+                return password.equals(pass);
+            } else {
+                return false;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
     
     @Override

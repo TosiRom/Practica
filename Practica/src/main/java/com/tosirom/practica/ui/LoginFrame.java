@@ -9,6 +9,7 @@ package com.tosirom.practica.ui;
  *
  *
  */
+import com.tosirom.practica.database.Angajati;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -99,12 +100,14 @@ class PassWordDialog extends JDialog {
         jbtOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String user = "stackoverflow";
-                String pass = "stackoverflow";
+//                String user = "stackoverflow";
+//                String pass = "stackoverflow";
+                //Check username and password
+//                boolean canLogin = pass.equals(String.valueOf(jpfPassword.getPassword())) && user.equals(jtfUsername.getText());
+                boolean canLogin = Angajati.CheckEmployeeUsernameAndPassword(jtfUsername.getText(), String.valueOf(jpfPassword.getPassword()));
                 
                 
-                if (pass.equals(String.valueOf(jpfPassword.getPassword()))
-                        && user.equals(jtfUsername.getText())) {
+                if (canLogin) {
                     parent.setVisible(true);
                     setVisible(false);
                 } else {
