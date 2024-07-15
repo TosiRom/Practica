@@ -11,16 +11,16 @@ public class AngajatiTableModel  extends AbstractTableModel {
     protected static Class[] COLUMN_CLASSES = {Integer.class, String.class, String.class, String.class, String.class,};        
     
     private Set<Integer> selected;
-    private List<Angajati> inventar;
+    private List<Angajati> angajati;
     
     public AngajatiTableModel() {
         selected = new TreeSet<>();
-        inventar = new ArrayList<>(25);
+        angajati = new ArrayList<>(25);
     }
     
     @Override
     public int getRowCount() {
-        return inventar.size();
+        return angajati.size();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class AngajatiTableModel  extends AbstractTableModel {
 
      @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Angajati client = inventar.get(rowIndex);
+        Angajati client = angajati.get(rowIndex);
         switch (columnIndex) {
             case 0: return client.ID;
             case 1: return client.Nume;
@@ -58,13 +58,13 @@ public class AngajatiTableModel  extends AbstractTableModel {
     }
     
      public void add(Angajati client) {
-        int index = inventar.size();
-        inventar.add(client);
+        int index = angajati.size();
+        angajati.add(client);
         fireTableRowsInserted(index, index);
     }
 
     public Angajati cardAt(int rowIndex) {
-        return inventar.get(rowIndex);
+        return angajati.get(rowIndex);
     }
     
 }
