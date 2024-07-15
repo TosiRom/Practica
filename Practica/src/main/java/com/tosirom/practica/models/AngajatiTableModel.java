@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class AngajatiTableModel  extends AbstractTableModel {
-    protected static String[] COLUMN_NAMES = {"ID", "Nume", "Prenume","Functie","Data Angajare"};
+    protected static String[] COLUMN_NAMES = {"ID", "Nume", "Prenume", "Functie", "Data Angajare"};
     protected static Class[] COLUMN_CLASSES = {Integer.class, String.class, String.class, String.class, Date.class,};        
     
     private Set<Integer> selected;
