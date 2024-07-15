@@ -1,5 +1,6 @@
 package com.tosirom.practica.models;
 import com.tosirom.practica.database.Angajati;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.TreeSet;
 
 public class AngajatiTableModel  extends AbstractTableModel {
     protected static String[] COLUMN_NAMES = {"ID", "Nume", "Prenume","Functie","Data Angajare"};
-    protected static Class[] COLUMN_CLASSES = {Integer.class, String.class, String.class, String.class, String.class,};        
+    protected static Class[] COLUMN_CLASSES = {Integer.class, String.class, String.class, String.class, Date.class,};        
     
     private Set<Integer> selected;
     private List<Angajati> angajati;
