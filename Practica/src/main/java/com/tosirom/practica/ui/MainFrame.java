@@ -4,20 +4,6 @@
  */
 package com.tosirom.practica.ui;
 
-import com.tosirom.practica.database.Angajati;
-import com.tosirom.practica.database.Client;
-import com.tosirom.practica.database.Inchirieri;
-import com.tosirom.practica.database.Inventar;
-import com.tosirom.practica.database.Produse;
-import com.tosirom.practica.models.AngajatiTableModel;
-import com.tosirom.practica.models.ClientTableModel;
-import com.tosirom.practica.models.InchirieriTableModel;
-import com.tosirom.practica.models.InventarTableModel;
-import com.tosirom.practica.models.ProductTableModel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -42,92 +28,19 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        formAngajati1 = new com.tosirom.practica.ui.panels.FormAngajati();
-        jPanel4 = new javax.swing.JPanel();
-        formInventar1 = new com.tosirom.practica.ui.panels.FormInventar();
-        jPanel5 = new javax.swing.JPanel();
-        formProduse1 = new com.tosirom.practica.ui.panels.FormProduse();
-        jPanel2 = new javax.swing.JPanel();
-        formInchirieri1 = new com.tosirom.practica.ui.panels.FormInchirieri();
-        formClienti1 = new com.tosirom.practica.ui.panels.FormClienti();
+        formAngajati2 = new com.tosirom.practica.ui.panels.FormAngajati();
+        formClienti2 = new com.tosirom.practica.ui.panels.FormClienti();
+        formInchirieri2 = new com.tosirom.practica.ui.panels.FormInchirieri();
+        formInventar2 = new com.tosirom.practica.ui.panels.FormInventar();
+        formProduse2 = new com.tosirom.practica.ui.panels.FormProduse();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formAngajati1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(formAngajati1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Angajati", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formInventar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formInventar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Inventar", jPanel4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formProduse1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(formProduse1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Produse", jPanel5);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formInchirieri1, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formInchirieri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Inchirieri", jPanel2);
-        jTabbedPane1.addTab("Clienti", formClienti1);
+        jTabbedPane1.addTab("Angajati", formAngajati2);
+        jTabbedPane1.addTab("Clienti", formClienti2);
+        jTabbedPane1.addTab("Inchirieri", formInchirieri2);
+        jTabbedPane1.addTab("Inventar", formInventar2);
+        jTabbedPane1.addTab("Produse", formProduse2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,15 +95,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.tosirom.practica.ui.panels.FormAngajati formAngajati1;
-    private com.tosirom.practica.ui.panels.FormClienti formClienti1;
-    private com.tosirom.practica.ui.panels.FormInchirieri formInchirieri1;
-    private com.tosirom.practica.ui.panels.FormInventar formInventar1;
-    private com.tosirom.practica.ui.panels.FormProduse formProduse1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private com.tosirom.practica.ui.panels.FormAngajati formAngajati2;
+    private com.tosirom.practica.ui.panels.FormClienti formClienti2;
+    private com.tosirom.practica.ui.panels.FormInchirieri formInchirieri2;
+    private com.tosirom.practica.ui.panels.FormInventar formInventar2;
+    private com.tosirom.practica.ui.panels.FormProduse formProduse2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
