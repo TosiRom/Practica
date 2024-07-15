@@ -80,4 +80,6 @@ public class Inventar {
     public String toString() {
         return this.ID + ", " + this.ID_Produs + ", " + this.Cantitate + ".";
     }
+
+   
 }
