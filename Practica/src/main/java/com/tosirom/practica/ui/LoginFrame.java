@@ -7,7 +7,7 @@ package com.tosirom.practica.ui;
 
 /**
  *
- * @author Skiuileuf
+ *
  */
 import java.awt.*;
 import java.awt.event.*;
