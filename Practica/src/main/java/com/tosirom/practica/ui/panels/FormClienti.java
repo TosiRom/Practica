@@ -12,7 +12,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Skiuileuf
+
  */
 public class FormClienti extends javax.swing.JPanel {
 

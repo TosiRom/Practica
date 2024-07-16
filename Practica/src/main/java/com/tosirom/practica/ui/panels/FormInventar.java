@@ -16,7 +16,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Skiuileuf
+ 
  */
 public class FormInventar extends javax.swing.JPanel {
 

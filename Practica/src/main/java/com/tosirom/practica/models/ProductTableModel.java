@@ -15,7 +15,6 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Skiuileuf
  */
 public class ProductTableModel extends AbstractTableModel {
     protected static String[] COLUMN_NAMES = {"ID", "Tip", "Titlu", "Gen", "An Lansare", "Disponibil", "Pret Inchiriere"};

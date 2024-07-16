@@ -17,7 +17,7 @@ import javax.swing.RowSorter;
 
 /**
  *
- * @author Skiuileuf
+ 
  */
 public class FormInchirieri extends javax.swing.JPanel {
 

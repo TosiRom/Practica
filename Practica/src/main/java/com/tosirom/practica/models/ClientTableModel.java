@@ -13,7 +13,6 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Skiuileuf
  */
 public class ClientTableModel extends AbstractTableModel {
 

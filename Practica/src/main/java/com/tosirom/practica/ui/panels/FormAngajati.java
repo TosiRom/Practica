@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Skiuileuf
+
  */
 public class FormAngajati extends javax.swing.JPanel {
 
