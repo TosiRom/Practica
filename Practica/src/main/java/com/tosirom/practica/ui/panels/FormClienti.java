@@ -6,6 +6,7 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Client;
 import com.tosirom.practica.models.ClientTableModel;
+import javax.swing.RowSorter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -21,7 +22,7 @@ public class FormClienti extends javax.swing.JPanel {
     public FormClienti() {
         initComponents();
         RefreshClientsTable();
-        
+
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelClienti.getModel());
         tabelClienti.setRowSorter(sorter);
     }
@@ -120,8 +121,8 @@ public class FormClienti extends javax.swing.JPanel {
 
         int[] selRows = tabelClienti.getSelectedRows();
 
-        for(int i = 0; i < selRows.length; i++) {
-            Client.DeleteClient( (Integer)model.getValueAt(selRows[i], 0));
+        for (int i = 0; i < selRows.length; i++) {
+            Client.DeleteClient((Integer) model.getValueAt(selRows[i], 0));
         }
 
         RefreshClientsTable();
@@ -137,14 +138,22 @@ public class FormClienti extends javax.swing.JPanel {
     }//GEN-LAST:event_btnResetClientiActionPerformed
     private void RefreshClientsTable() {
         ClientTableModel model = new ClientTableModel();
-        
+
         tabelClienti.setModel(model);
-        
+
         var clients = Client.GetAllClients();
-        
-        for(int i = 0; i < clients.size(); i++) {
+
+        RowSorter<?> sorter = tabelClienti.getRowSorter();
+        tabelClienti.setAutoCreateRowSorter(false);
+        tabelClienti.setRowSorter(null);
+
+        for (int i = 0; i < clients.size(); i++) {
             model.add(clients.get(i));
         }
+
+        tabelClienti.setRowSorter((RowSorter<? extends TableModel>) sorter);
+        tabelClienti.setAutoCreateRowSorter(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

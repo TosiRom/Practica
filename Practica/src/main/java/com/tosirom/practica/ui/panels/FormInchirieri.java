@@ -4,10 +4,16 @@
  */
 package com.tosirom.practica.ui.panels;
 
+import com.tosirom.practica.database.Database;
 import com.tosirom.practica.database.Inchirieri;
 import com.tosirom.practica.models.InchirieriTableModel;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import java.sql.Date;
+import javax.swing.RowSorter;
 
 /**
  *
@@ -42,12 +48,12 @@ public class FormInchirieri extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        cmbClienti = new javax.swing.JComboBox<>();
+        cmbProdus = new javax.swing.JComboBox<>();
+        dateInchiriere = new com.toedter.calendar.JDateChooser();
+        dateReturnare = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkReturnat = new javax.swing.JCheckBox();
         btnChange = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
 
@@ -97,17 +103,27 @@ public class FormInchirieri extends javax.swing.JPanel {
 
         jLabel4.setText("Data Inchiriere");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClienti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbProdus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Data Returnare");
 
-        jCheckBox1.setText("Returnat");
+        chkReturnat.setText("Returnat");
 
         btnChange.setText("Creeaza / Actualizeaza");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,11 +151,11 @@ public class FormInchirieri extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(chkReturnat)
+                            .addComponent(dateReturnare, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbClienti, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbProdus, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateInchiriere, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,22 +163,22 @@ public class FormInchirieri extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbClienti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbProdus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateInchiriere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateReturnare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(chkReturnat)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRefresh)
@@ -185,18 +201,97 @@ public class FormInchirieri extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+         InchirieriTableModel model = (InchirieriTableModel) tabelInchirieri.getModel();
+
+        int[] selRows = tabelInchirieri.getSelectedRows();
+
+        for(int i = 0; i < selRows.length; i++) {
+            Inchirieri.DeleteInchirieri((Integer)model.getValueAt(selRows[i], 0));
+        }
+
+        RefreshInchirieriTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void resetForm() {
+        cmbClienti.setSelectedIndex(0);
+        cmbProdus.setSelectedIndex(0);
+        dateInchiriere.setDate(new Date(System.currentTimeMillis()));
+        dateReturnare.setDate(new Date(System.currentTimeMillis()));
+        chkReturnat.setSelected(false);
+    }
+    
+    private void populateDropdowns() {
+         try(Connection conn = Database.getConnection()) {
+            String SQL_clienti = "SELECT ID FROM Clienti";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(SQL_clienti);
+            
+            cmbClienti.removeAllItems();
+            while (result.next()) {
+                Integer id = result.getInt("ID");
+                cmbClienti.addItem(id.toString());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+         
+         try(Connection conn = Database.getConnection()) {
+            String SQL_clienti = "SELECT ID FROM Produse";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(SQL_clienti);
+            
+            cmbProdus.removeAllItems();
+            while (result.next()) {
+                Integer id = result.getInt("ID");
+                cmbProdus.addItem(id.toString());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        resetForm();
+        populateDropdowns();
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+        Inchirieri i = new Inchirieri();
+        
+        i.ID_Client = Integer.parseInt((String)cmbClienti.getSelectedItem());
+        i.ID_Produs = Integer.parseInt((String)cmbProdus.getSelectedItem());
+        i.Data_inchiriere = new Date(dateInchiriere.getDate().getTime());
+        i.Data_returnare = new Date(dateReturnare.getDate().getTime());
+        i.Returnat = chkReturnat.isSelected();
+        
+        if(Inchirieri.CreateInchirieri(i)) {
+            resetForm();
+        }
+        RefreshInchirieriTable();
+    }//GEN-LAST:event_btnChangeActionPerformed
+
         private void RefreshInchirieriTable() {
+        populateDropdowns();
         InchirieriTableModel model = new InchirieriTableModel();
         tabelInchirieri.setModel(model);
         
           
         var inchirieri = Inchirieri.GetAllInchirieri();
         
+        RowSorter<?> sorter = tabelInchirieri.getRowSorter();
+        tabelInchirieri.setAutoCreateRowSorter(false);
+        tabelInchirieri.setRowSorter(null);
+        
         for(int i = 0; i < inchirieri.size(); i++) {
+            
             model.add(inchirieri.get(i));
         }
+        
+        tabelInchirieri.setRowSorter((RowSorter<? extends TableModel>) sorter);
+        tabelInchirieri.setAutoCreateRowSorter(true);
     }
     
 
@@ -205,11 +300,11 @@ public class FormInchirieri extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnReset;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private javax.swing.JCheckBox chkReturnat;
+    private javax.swing.JComboBox<String> cmbClienti;
+    private javax.swing.JComboBox<String> cmbProdus;
+    private com.toedter.calendar.JDateChooser dateInchiriere;
+    private com.toedter.calendar.JDateChooser dateReturnare;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

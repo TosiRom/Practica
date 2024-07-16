@@ -6,6 +6,7 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Inventar;
 import com.tosirom.practica.models.InventarTableModel;
+import javax.swing.RowSorter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -21,7 +22,7 @@ public class FormInventar extends javax.swing.JPanel {
     public FormInventar() {
         initComponents();
         RefreshInventoryTable();
-        
+
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelInventar.getModel());
         tabelInventar.setRowSorter(sorter);
     }
@@ -170,17 +171,24 @@ public class FormInventar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-        private void RefreshInventoryTable() {
+    private void RefreshInventoryTable() {
         InventarTableModel model = new InventarTableModel();
         tabelInventar.setModel(model);
-        
+
         var inventar = Inventar.GetAllInventar();
-        
-        for(int i = 0; i < inventar.size(); i++) {
+
+        RowSorter<?> sorter = tabelInventar.getRowSorter();
+        tabelInventar.setAutoCreateRowSorter(false);
+        tabelInventar.setRowSorter(null);
+
+        for (int i = 0; i < inventar.size(); i++) {
             model.add(inventar.get(i));
         }
+
+        tabelInventar.setRowSorter((RowSorter<? extends TableModel>) sorter);
+        tabelInventar.setAutoCreateRowSorter(true);
+
     }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
