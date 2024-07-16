@@ -78,7 +78,7 @@ public class Inventar {
     }
      public static boolean CreateInventar(Inventar in) {
         try (Connection conn = Database.getConnection()) {
-            String SQL = "INSERT INTO Invetar(ID_Produs,Cantitate) VALUES (?,?)";
+            String SQL = "INSERT INTO Inventar(ID_Produs,Cantitate) VALUES (?,?)";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, in.ID_Produs);
             statement.setInt(2, in.Cantitate);
@@ -90,9 +90,9 @@ public class Inventar {
             return false;
         }
     }
-     public static boolean UpdateProduse(Inventar in) {
+     public static boolean UpdateInventar(Inventar in) {
         try (Connection conn = Database.getConnection()) {
-            String SQL = "UPDATE Invetar SET ID_Produs = ?, Cantitate = ? WHERE ID = ?";
+            String SQL = "UPDATE Inventar SET ID_Produs = ?, Cantitate = ? WHERE ID = ?";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, in.ID_Produs);
             statement.setInt(2, in.Cantitate);
@@ -105,10 +105,10 @@ public class Inventar {
         }
     }
 
-    public static boolean DeleteInvetar(Integer id) {
+    public static boolean DeleteInventar(Integer id) {
 
         try (Connection conn = Database.getConnection()) {
-            String SQL = "DELETE FROM Produse WHERE ID = ?";
+            String SQL = "DELETE FROM Inventar WHERE ID = ?";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, id);
             
