@@ -116,6 +116,7 @@ public class Inchirieri {
             statement.setDate(3, i.Data_inchiriere);
             statement.setDate(4, i.Data_returnare);
             statement.setBoolean(5, i.Returnat);
+            statement.setInt(6, i.ID);
             statement.executeUpdate();
 
             return true;

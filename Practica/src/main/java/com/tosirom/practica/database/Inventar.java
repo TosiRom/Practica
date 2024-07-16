@@ -96,6 +96,7 @@ public class Inventar {
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, in.ID_Produs);
             statement.setInt(2, in.Cantitate);
+            statement.setInt(3, in.ID);
             statement.executeUpdate();
 
             return true;

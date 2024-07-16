@@ -121,6 +121,7 @@ public class Produse {
             statement.setInt(4, p.An_Lansare);
             statement.setBoolean(5, p.Disponibil);
             statement.setInt(6, p.Pret_Inchiriere);
+            statement.setInt(7, p.ID);
             statement.executeUpdate();
 
             return true;

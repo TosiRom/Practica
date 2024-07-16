@@ -104,6 +104,11 @@ public class FormProduse extends javax.swing.JPanel {
         });
 
         btnChange.setText("Creeaza");
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeActionPerformed(evt);
+            }
+        });
 
         cmbTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--TIP--", "Album CD", "Album Vynil", "Film Blu-ray", "Film VHS", "Serial Blu-ray", "Console Game", "PC GAME" }));
         cmbTip.addActionListener(new java.awt.event.ActionListener() {
@@ -236,10 +241,20 @@ public class FormProduse extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        RefreshProductsTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        ProductTableModel model = (ProductTableModel) tabelProduse.getModel();
+
+        int[] selRows = tabelProduse.getSelectedRows();
+
+        for(int i = 0; i < selRows.length; i++) {
+            Produse.DeleteProduse((Integer)model.getValueAt(selRows[i], 0));
+        }
+
+        RefreshProductsTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void cmbTipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipActionPerformed
@@ -256,14 +271,37 @@ public class FormProduse extends javax.swing.JPanel {
 
     private void resetForm() {
         cmbTip.setSelectedIndex(0);
+        txtTitlu.setText("");
         cmbGen.setSelectedIndex(0);
+        intAnLansare.setValue(2024);
+        txtPret.setText("");
+        chkDisponibil.setSelected(false);
     }
     
     
     
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        resetForm();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+        // TODO add your handling code here:
+        Produse p = new Produse();
+        
+        p.Tip = (String)cmbTip.getSelectedItem();
+        p.Titlu = txtTitlu.getText();
+        p.Gen = (String)cmbGen.getSelectedItem();
+        p.An_Lansare = (Integer)intAnLansare.getValue();
+        p.Pret_Inchiriere = Integer.parseInt(txtPret.getText());
+        p.Disponibil = chkDisponibil.isSelected();
+        
+        if (Produse.CreateProduse(p)) {
+            resetForm();
+        }
+        
+        RefreshProductsTable();
+    }//GEN-LAST:event_btnChangeActionPerformed
 
     private void RefreshProductsTable() {
         ProductTableModel model = new ProductTableModel();
