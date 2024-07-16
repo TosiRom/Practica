@@ -73,7 +73,7 @@ public class InventarTableModel  extends AbstractTableModel {
             
         }
         // Update the database
-      
+        updateDatabse(client);
         // Notify listeners that the data has changed
         fireTableCellUpdated(rowIndex, columnIndex);
     }

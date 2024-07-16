@@ -82,7 +82,7 @@ public class InchirieriTableModel  extends AbstractTableModel {
                 break;
         }
         // Update the database
-      
+        updateDatabse(client);
         // Notify listeners that the data has changed
         fireTableCellUpdated(rowIndex, columnIndex);
     }
