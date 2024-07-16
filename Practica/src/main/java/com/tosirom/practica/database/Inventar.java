@@ -5,6 +5,7 @@
 package com.tosirom.practica.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,6 +76,51 @@ public class Inventar {
         
         return inv;
     }
+     public static boolean CreateInventar(Inventar in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO Invetar(ID_Produs,Cantitate) VALUES (?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, in.ID_Produs);
+            statement.setInt(2, in.Cantitate);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+     public static boolean UpdateProduse(Inventar in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Invetar SET ID_Produs = ?, Cantitate = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, in.ID_Produs);
+            statement.setInt(2, in.Cantitate);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteInvetar(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Produse WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
     
     @Override
     public String toString() {

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
@@ -89,6 +90,57 @@ public class Inchirieri {
         
         return i;
     }
+     public static boolean CreateInchirieri(Inchirieri i) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO Inchirieri(ID_Client, ID_Produs, Data_Inchiriere, Data_Returnare, Returnat) VALUES (?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, i.ID_Client);
+            statement.setInt(2, i.ID_Produs);
+            statement.setDate(3, i.Data_inchiriere);
+            statement.setDate(4, i.Data_returnare);
+            statement.setBoolean(5, i.Returnat);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+     public static boolean UpdateProduse(Inchirieri i) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Inchirieri SET ID_Client = ?, ID_Produs = ?, Data_Inchiriere = ?, Data_Returnare = ?, Returnat = ? WHERE ID = ?";
+             PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, i.ID_Client);
+            statement.setInt(2, i.ID_Produs);
+            statement.setDate(3, i.Data_inchiriere);
+            statement.setDate(4, i.Data_returnare);
+            statement.setBoolean(5, i.Returnat);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteInchirieri(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Inchirieri WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
     
     @Override
     public String toString() {

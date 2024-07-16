@@ -111,6 +111,40 @@ public class Produse {
             return false;
         }
     }
+     public static boolean UpdateProduse(Produse p) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Produse SET TIP = ?, Titlu = ?, Gen = ?, An_Lansare = ?, Disponibil = ?, Pret_Inchiriere = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+           statement.setString(1, p.Tip);
+            statement.setString(2, p.Titlu);
+            statement.setString(3, p.Gen);
+            statement.setInt(4, p.An_Lansare);
+            statement.setBoolean(5, p.Disponibil);
+            statement.setInt(6, p.Pret_Inchiriere);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteClient(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Produse WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
     
     @Override
     public String toString() {
