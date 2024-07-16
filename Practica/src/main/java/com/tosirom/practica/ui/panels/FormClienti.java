@@ -40,7 +40,18 @@ public class FormClienti extends javax.swing.JPanel {
         btnResetClienti = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelClienti = new javax.swing.JTable();
-        clientForm1 = new com.tosirom.practica.ui.ClientForm();
+        jLabel1 = new javax.swing.JLabel();
+        txtNume = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtPrenume = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtAdresa = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtTelefon = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
+        btnAdaugaClient = new javax.swing.JButton();
 
         btnDeleteClienti.setText("Delete selected row");
         btnDeleteClienti.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +93,36 @@ public class FormClienti extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelClienti);
 
+        jLabel1.setText("Nume");
+
+        txtNume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Prenume");
+
+        jLabel5.setText("Adresa");
+
+        jLabel6.setText("Telefon");
+
+        jLabel7.setText("Email");
+
+        btnClear.setText("Reset");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnAdaugaClient.setText("Adauga client");
+        btnAdaugaClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdaugaClientActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,15 +138,54 @@ public class FormClienti extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addComponent(clientForm1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(75, 75, 75)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                                    .addComponent(txtTelefon)
+                                    .addComponent(txtAdresa)
+                                    .addComponent(txtPrenume)
+                                    .addComponent(txtNume)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAdaugaClient)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(clientForm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrenume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdaugaClient)
+                    .addComponent(btnClear))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnResetClienti)
                     .addComponent(btnDeleteClienti))
@@ -136,6 +216,41 @@ public class FormClienti extends javax.swing.JPanel {
         RefreshClientsTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResetClientiActionPerformed
+
+    private void txtNumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeActionPerformed
+
+        private void ClearFields() {
+        txtNume.setText("");
+        txtPrenume.setText("");
+        txtAdresa.setText("");
+        txtTelefon.setText("");
+        txtEmail.setText("");
+    }
+    
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        ClearFields();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAdaugaClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdaugaClientActionPerformed
+        // TODO add your handling code here:
+        Client n = new Client();
+
+        n.Nume = txtNume.getText();
+        n.Prenume = txtPrenume.getText();
+        n.Adresa = txtAdresa.getText();
+        n.Telefon = txtTelefon.getText();
+        n.Email = txtTelefon.getText();
+
+        boolean result = Client.CreateClient(n);
+
+        if(result) {
+            ClearFields();
+        }
+        RefreshClientsTable();
+    }//GEN-LAST:event_btnAdaugaClientActionPerformed
     private void RefreshClientsTable() {
         ClientTableModel model = new ClientTableModel();
 
@@ -157,10 +272,21 @@ public class FormClienti extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdaugaClient;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeleteClienti;
     private javax.swing.JButton btnResetClienti;
-    private com.tosirom.practica.ui.ClientForm clientForm1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelClienti;
+    private javax.swing.JTextField txtAdresa;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNume;
+    private javax.swing.JTextField txtPrenume;
+    private javax.swing.JTextField txtTelefon;
     // End of variables declaration//GEN-END:variables
 }
