@@ -1,5 +1,7 @@
 package com.tosirom.practica.models;
+import com.tosirom.practica.database.Inchirieri;
 import com.tosirom.practica.database.Inventar;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -52,6 +54,30 @@ public class InventarTableModel  extends AbstractTableModel {
             case 2: return client.Cantitate;
         }
         return null;
+    }
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Inventar client = inventar.get(rowIndex);
+        switch (columnIndex) {
+//            case 0:
+//                client.ID;
+//                break;
+            case 1:
+                client.ID_Produs = (int)aValue;
+                break;
+            case 2:
+                client.Cantitate = (int)aValue;
+                break;
+            
+        }
+        // Update the database
+      
+        // Notify listeners that the data has changed
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+    
+      private void updateDatabse(Inventar i) {
+        Inventar.UpdateInventar(i);
     }
     
      public void add(Inventar client) {

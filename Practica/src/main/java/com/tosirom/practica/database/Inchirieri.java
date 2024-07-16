@@ -107,7 +107,7 @@ public class Inchirieri {
             return false;
         }
     }
-     public static boolean UpdateProduse(Inchirieri i) {
+     public static boolean UpdateInchirieri(Inchirieri i) {
         try (Connection conn = Database.getConnection()) {
             String SQL = "UPDATE Inchirieri SET ID_Client = ?, ID_Produs = ?, Data_Inchiriere = ?, Data_Returnare = ?, Returnat = ? WHERE ID = ?";
              PreparedStatement statement = conn.prepareStatement(SQL);

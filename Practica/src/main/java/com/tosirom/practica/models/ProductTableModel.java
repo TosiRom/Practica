@@ -4,7 +4,9 @@
  */
 package com.tosirom.practica.models;
 
+import com.tosirom.practica.database.Inchirieri;
 import com.tosirom.practica.database.Produse;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -65,6 +67,41 @@ public class ProductTableModel extends AbstractTableModel {
             case 6: return client.Pret_Inchiriere;
         }
         return null;
+    }
+      @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Produse client = products.get(rowIndex);
+        switch (columnIndex) {
+//            case 0:
+//                client.ID;
+//                break;
+            case 1:
+                client.Tip = (String)aValue;
+                break;
+            case 2:
+                client.Titlu = (String)aValue;
+                break;
+            case 3:
+                client.Gen = (String)aValue;
+                break;
+            case 4:
+                client.An_Lansare = (int)aValue;
+                break;
+            case 5:
+                client.Disponibil = (Boolean)aValue;
+                break;
+            case 6:
+                client.Pret_Inchiriere = (int)aValue;
+                break;
+        }
+        // Update the database
+      
+        // Notify listeners that the data has changed
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+    
+      private void updateDatabse(Produse p) {
+        Produse.UpdateProduse(p);
     }
     
      public void add(Produse client) {

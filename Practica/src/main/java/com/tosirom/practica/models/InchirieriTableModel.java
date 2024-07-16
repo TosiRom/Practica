@@ -1,4 +1,5 @@
 package com.tosirom.practica.models;
+import com.tosirom.practica.database.Client;
 import com.tosirom.practica.database.Inchirieri;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -57,6 +58,39 @@ public class InchirieriTableModel  extends AbstractTableModel {
         }
         return null;
     }
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Inchirieri client = inchirieri.get(rowIndex);
+        switch (columnIndex) {
+//            case 0:
+//                client.ID;
+//                break;
+            case 1:
+                client.ID_Client = (int)aValue;
+                break;
+            case 2:
+                client.ID_Produs = (int)aValue;
+                break;
+            case 3:
+                client.Data_inchiriere = (Date)aValue;
+                break;
+            case 4:
+                client.Data_returnare = (Date)aValue;
+                break;
+            case 5:
+                client.Returnat = (Boolean)aValue;
+                break;
+        }
+        // Update the database
+      
+        // Notify listeners that the data has changed
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+    
+      private void updateDatabse(Inchirieri i) {
+        Inchirieri.UpdateInchirieri(i);
+    }
+
     
      public void add(Inchirieri client) {
         int index = inchirieri.size();
