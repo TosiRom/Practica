@@ -47,10 +47,12 @@ public class ProductTableModel extends AbstractTableModel {
         return COLUMN_CLASSES[columnIndex];
     }
     
+
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
+        return columnIndex != 0;
     }
+
 
      @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
