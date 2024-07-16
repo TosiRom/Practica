@@ -94,6 +94,7 @@ public class Angajati {
         return a;
     }
     
+    
     public static boolean CheckEmployeeUsernameAndPassword(String user, String pass) {
          try(Connection conn = Database.getConnection()) {
             String SQL = "SELECT Parola FROM Angajati WHERE Username = '" + user + "'";

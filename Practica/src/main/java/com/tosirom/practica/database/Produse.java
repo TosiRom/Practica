@@ -5,6 +5,7 @@
 package com.tosirom.practica.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -91,6 +92,24 @@ public class Produse {
         }
         
         return p;
+    }
+     public static boolean CreateProduse(Produse p) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO Produse(TIP, Titlu, Gen, An_Lansare, Disponibil, Pret_Inchiriere) VALUES (?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, p.Tip);
+            statement.setString(2, p.Titlu);
+            statement.setString(3, p.Gen);
+            statement.setInt(4, p.An_Lansare);
+            statement.setBoolean(5, p.Disponibil);
+            statement.setInt(6, p.Pret_Inchiriere);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
     
     @Override
