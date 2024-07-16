@@ -6,6 +6,8 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Inventar;
 import com.tosirom.practica.models.InventarTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +21,9 @@ public class FormInventar extends javax.swing.JPanel {
     public FormInventar() {
         initComponents();
         RefreshInventoryTable();
+        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelInventar.getModel());
+        tabelInventar.setRowSorter(sorter);
     }
 
     /**

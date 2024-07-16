@@ -6,6 +6,8 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Inchirieri;
 import com.tosirom.practica.models.InchirieriTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +21,9 @@ public class FormInchirieri extends javax.swing.JPanel {
     public FormInchirieri() {
         initComponents();
         RefreshInchirieriTable();
+        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelInchirieri.getModel());
+        tabelInchirieri.setRowSorter(sorter);
     }
 
     /**

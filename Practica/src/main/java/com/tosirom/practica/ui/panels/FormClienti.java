@@ -6,6 +6,8 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Client;
 import com.tosirom.practica.models.ClientTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +21,9 @@ public class FormClienti extends javax.swing.JPanel {
     public FormClienti() {
         initComponents();
         RefreshClientsTable();
+        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelClienti.getModel());
+        tabelClienti.setRowSorter(sorter);
     }
 
     /**

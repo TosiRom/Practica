@@ -6,6 +6,8 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Produse;
 import com.tosirom.practica.models.ProductTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +21,9 @@ public class FormProduse extends javax.swing.JPanel {
     public FormProduse() {
         initComponents();
         RefreshProductsTable();
+        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelProduse.getModel());
+        tabelProduse.setRowSorter(sorter);
     }
 
     /**

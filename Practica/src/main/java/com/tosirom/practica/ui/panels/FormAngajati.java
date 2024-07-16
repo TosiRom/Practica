@@ -6,6 +6,12 @@ package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Angajati;
 import com.tosirom.practica.models.AngajatiTableModel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +25,9 @@ public class FormAngajati extends javax.swing.JPanel {
     public FormAngajati() {
         initComponents();
         RefreshEmployeesTable();
+        
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tabelAngajati.getModel());
+        tabelAngajati.setRowSorter(sorter);
     }
 
     /**
