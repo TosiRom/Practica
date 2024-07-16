@@ -39,10 +39,10 @@ public class InchirieriTableModel  extends AbstractTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         return COLUMN_CLASSES[columnIndex];
     }
-    
+
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
+        return columnIndex != 0;
     }
 
      @Override
