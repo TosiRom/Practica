@@ -106,6 +106,25 @@ public class Client {
             return false;
         }
     }
+    
+    public static boolean UpdateClient(Client c) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Clienti SET Nume = ?, Prenume = ?, Adresa = ?, Telefon = ?, Email = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, c.Nume);
+            statement.setString(2, c.Prenume);
+            statement.setString(3, c.Adresa);
+            statement.setString(4, c.Telefon);
+            statement.setString(5, c.Email);
+            statement.setInt(6, c.ID);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 
     public static boolean DeleteClient(Integer id) {
 
