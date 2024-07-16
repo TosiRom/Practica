@@ -130,7 +130,7 @@ public class Produse {
         }
     }
 
-    public static boolean DeleteClient(Integer id) {
+    public static boolean DeleteProduse(Integer id) {
 
         try (Connection conn = Database.getConnection()) {
             String SQL = "DELETE FROM Produse WHERE ID = ?";
