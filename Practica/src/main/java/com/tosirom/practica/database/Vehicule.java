@@ -1,6 +1,7 @@
 package com.tosirom.practica.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -73,6 +74,52 @@ public class Vehicule {
         }
 
         return vehicul;
+    }
+     public static boolean CreateVehicule(Vehicule in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO Vehicule(Numar_Inmatriculare,ID_Client,Marca_Model_Vehicul) VALUES (?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Numar_Inmatriculare);
+            statement.setInt(2, in.ID_Client);
+            statement.setString(3, in.Marca_Model_Vehicul);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+     public static boolean UpdateVehicule(Vehicule in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Vehicule SET Numar_Inmatriculare = ?, ID_Client = ?, Marca_Model_Vehicul WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Numar_Inmatriculare);
+            statement.setInt(2, in.ID_Client);
+            statement.setString(3, in.Marca_Model_Vehicul);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteInventar(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Vehicule WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override

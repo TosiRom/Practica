@@ -1,6 +1,7 @@
 package com.tosirom.practica.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -70,26 +71,54 @@ public class Produse {
         }
 
         return produs;
-    }
-    
-    public static void DeleteProdus(int id) {
-        Produse produs = new Produse();
-
+    } public static boolean CreateProduse(Produse in) {
         try (Connection conn = Database.getConnection()) {
-            String SQL = "DELETE FROM Produse WHERE ID = " + id;
-            Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery(SQL);
+            String SQL = "INSERT INTO Produse (Denumire,Pret) VALUES (?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Denumire);
+            statement.setDouble(2, in.Pret);
+            statement.executeUpdate();
 
-            if (result.next()) {
-                produs = _ReadProduse(result);
-            }
-
+            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
+            return false;
         }
-
-//        return produs;
     }
+     public static boolean UpdateProduse(Produse in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Produse SET Denumire = ?, Pret = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Denumire);
+            statement.setDouble(2, in.Pret);
+            statement.setInt(3, in.ID);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteProduse(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Inventar WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    
 
     @Override
     public String toString() {

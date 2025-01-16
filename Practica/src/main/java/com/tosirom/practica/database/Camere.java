@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 
 /**
  * This class represents an employee.
@@ -90,6 +91,55 @@ public class Camere {
         }
         
         return a;
+    }
+     public static boolean CreateCamere(Camere in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO Camere (Numar,Etaj,Numar_Paturi,Balcon) VALUES (?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Numar);
+            statement.setString(2, in.Etaj);
+            statement.setInt(3,in.Numar_Paturi);
+            statement.setBoolean(4, in.Balcon);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+     public static boolean UpdateCamere(Camere in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE Camere SET Numar = ?, Etaj = ?, Numar_Paturi = ?, Balcon = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setString(1, in.Numar);
+            statement.setString(2, in.Etaj);
+            statement.setInt(3,in.Numar_Paturi);
+            statement.setBoolean(4, in.Balcon);
+            statement.setInt(5,in.ID);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteCamere(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Camere WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
     
     @Override

@@ -1,6 +1,7 @@
 package com.tosirom.practica.database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,7 @@ public class InventarCamera {
         this.Cantitate = Cantitate;
     }
 
-    private static InventarCamera _ReadInventar(ResultSet result) throws SQLException {
+    private static InventarCamera _ReadInventarCamera(ResultSet result) throws SQLException {
         int idCamera = result.getInt("ID_Camera");
         int idProdus = result.getInt("ID_Produs");
         int cantitate = result.getInt("Cantitate");
@@ -34,7 +35,7 @@ public class InventarCamera {
         return new InventarCamera(idCamera, idProdus, cantitate);
     }
 
-    public static ArrayList<InventarCamera> GetAllInventar() {
+    public static ArrayList<InventarCamera> GetAllInventarCamera() {
         ArrayList<InventarCamera> inventarList = new ArrayList<>();
 
         try (Connection conn = Database.getConnection()) {
@@ -43,13 +44,58 @@ public class InventarCamera {
             ResultSet result = statement.executeQuery(SQL);
 
             while (result.next()) {
-                inventarList.add(_ReadInventar(result));
+                inventarList.add(_ReadInventarCamera(result));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
         return inventarList;
+    }
+     public static boolean CreateInventarCamera(Inventar in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "INSERT INTO InventarCamere(ID_Produs,Cantaite) VALUES (?,?)";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, in.ID_Produs);
+            statement.setInt(2, in.Cantitate);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+     public static boolean UpdateInventarCamera(Inventar in) {
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "UPDATE InventarCamere SET ID_Produs = ?, Cantitate = ? WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, in.ID_Produs);
+            statement.setInt(2, in.Cantitate);
+            statement.setInt(3, in.ID);
+            statement.executeUpdate();
+
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean DeleteInventarCamera(Integer id) {
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM InventarCamera WHERE ID = ?";
+            PreparedStatement statement = conn.prepareStatement(SQL);
+            statement.setInt(1, id);
+            
+            statement.executeUpdate();
+            
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     public static InventarCamera GetInventarByCameraAndProdus(int idCamera, int idProdus) {
@@ -61,7 +107,7 @@ public class InventarCamera {
             ResultSet result = statement.executeQuery(SQL);
 
             if (result.next()) {
-                inventar = _ReadInventar(result);
+                inventar = _ReadInventarCamera(result);
             }
 
         } catch (Exception ex) {
