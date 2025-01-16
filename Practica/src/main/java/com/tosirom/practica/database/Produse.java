@@ -71,6 +71,25 @@ public class Produse {
 
         return produs;
     }
+    
+    public static void DeleteProdus(int id) {
+        Produse produs = new Produse();
+
+        try (Connection conn = Database.getConnection()) {
+            String SQL = "DELETE FROM Produse WHERE ID = " + id;
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(SQL);
+
+            if (result.next()) {
+                produs = _ReadProduse(result);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+//        return produs;
+    }
 
     @Override
     public String toString() {

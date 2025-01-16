@@ -252,7 +252,7 @@ public class FormProduse extends javax.swing.JPanel {
         int[] selRows = tabelProduse.getSelectedRows();
 
         for(int i = 0; i < selRows.length; i++) {
-            Produse.DeleteProduse((Integer)model.getValueAt(selRows[i], 0));
+            Produse.DeleteProdus((Integer)model.getValueAt(selRows[i], 0));
         }
 
         RefreshProductsTable();
