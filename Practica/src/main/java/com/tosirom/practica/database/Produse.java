@@ -104,7 +104,7 @@ public class Produse {
     public static boolean DeleteProduse(Integer id) {
 
         try (Connection conn = Database.getConnection()) {
-            String SQL = "DELETE FROM Inventar WHERE ID = ?";
+            String SQL = "DELETE FROM Produse WHERE ID = ?";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, id);
             
