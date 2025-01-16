@@ -19,8 +19,8 @@ public class Practica {
 
         FlatDarculaLaf.setup();
         
-        LoginFrame lf = new LoginFrame();
-        lf.setVisible(true);
+//        LoginFrame lf = new LoginFrame();
+//        lf.setVisible(true);
         
         MainFrame mf = new MainFrame();
         
