@@ -54,7 +54,7 @@ public class InventarCamera {
     }
      public static boolean CreateInventarCamera(Inventar in) {
         try (Connection conn = Database.getConnection()) {
-            String SQL = "INSERT INTO InventarCamere(ID_Produs,Cantaite) VALUES (?,?)";
+            String SQL = "INSERT INTO InventarCamere(ID_Produs,Cantitate) VALUES (?,?)";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, in.ID_Produs);
             statement.setInt(2, in.Cantitate);
