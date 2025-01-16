@@ -51,7 +51,7 @@ public class InchirieriTableModel  extends AbstractTableModel {
         switch (columnIndex) {
             case 0: return client.ID;
             case 1: return client.ID_Client;
-            case 2: return client.ID_Produs;
+            case 2: return client.ID_Camera;
             case 3: return client.Data_inchiriere;
             case 4: return client.Data_returnare;
             case 5: return client.Returnat;
@@ -69,7 +69,7 @@ public class InchirieriTableModel  extends AbstractTableModel {
                 client.ID_Client = (int)aValue;
                 break;
             case 2:
-                client.ID_Produs = (int)aValue;
+                client.ID_Camera = (int)aValue;
                 break;
             case 3:
                 client.Data_inchiriere = (Date)aValue;

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Inchirieri {
     public int ID;
     public int ID_Client;
-    public int ID_Produs;
+    public int ID_Camera;
     public Date Data_inchiriere;
     public Date Data_returnare;
     public boolean Returnat;
@@ -29,14 +29,14 @@ public class Inchirieri {
     public Inchirieri( 
         int ID,
         int ID_Client,
-        int ID_Produs,
+        int ID_Camera,
         Date Data_inchiriere,
         Date Data_returnare,
         boolean Returnat
     ) {
         this.ID = ID;
         this.ID_Client = ID_Client;
-        this.ID_Produs = ID_Produs;
+        this.ID_Camera = ID_Camera;
         this.Data_inchiriere = Data_inchiriere;
         this.Data_returnare = Data_returnare;
         this.Returnat = Returnat;
@@ -45,12 +45,12 @@ public class Inchirieri {
     private static Inchirieri _ReadInchirieri(ResultSet result) throws SQLException {
         int id = result.getInt("ID");
         int id_client = result.getInt("ID_Client");
-        int id_produs = result.getInt("ID_Produs");
+        int id_camera = result.getInt("ID_Camera");
         Date data_inchiriere = result.getDate("Data_inchiriere");
         Date data_returnare = result.getDate("Data_returnare");
         boolean returnat = result.getBoolean("Returnat");
                 
-        Inchirieri i = new Inchirieri(id, id_client, id_produs, data_inchiriere, data_returnare, returnat);
+        Inchirieri i = new Inchirieri(id, id_client, id_camera, data_inchiriere, data_returnare, returnat);
         return i;
     }
     
@@ -95,7 +95,7 @@ public class Inchirieri {
             String SQL = "INSERT INTO Inchirieri(ID_Client, ID_Produs, Data_Inchiriere, Data_Returnare, Returnat) VALUES (?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, i.ID_Client);
-            statement.setInt(2, i.ID_Produs);
+            statement.setInt(2, i.ID_Camera);
             statement.setDate(3, i.Data_inchiriere);
             statement.setDate(4, i.Data_returnare);
             statement.setBoolean(5, i.Returnat);
@@ -112,7 +112,7 @@ public class Inchirieri {
             String SQL = "UPDATE Inchirieri SET ID_Client = ?, ID_Produs = ?, Data_Inchiriere = ?, Data_Returnare = ?, Returnat = ? WHERE ID = ?";
              PreparedStatement statement = conn.prepareStatement(SQL);
             statement.setInt(1, i.ID_Client);
-            statement.setInt(2, i.ID_Produs);
+            statement.setInt(2, i.ID_Camera);
             statement.setDate(3, i.Data_inchiriere);
             statement.setDate(4, i.Data_returnare);
             statement.setBoolean(5, i.Returnat);
@@ -145,6 +145,6 @@ public class Inchirieri {
     
     @Override
     public String toString() {
-        return this.ID + ", " + this.ID_Client + ", " + this.ID_Produs + ", " + this.Data_inchiriere + ", " + this.Data_returnare + ", " + this.Returnat + ".";
+        return this.ID + ", " + this.ID_Client + ", " + this.ID_Camera + ", " + this.Data_inchiriere + ", " + this.Data_returnare + ", " + this.Returnat + ".";
     }
 }

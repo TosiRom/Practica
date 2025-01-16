@@ -106,7 +106,7 @@ public class Vehicule {
         }
     }
 
-    public static boolean DeleteInventar(Integer id) {
+    public static boolean DeleteVehicule(Integer id) {
 
         try (Connection conn = Database.getConnection()) {
             String SQL = "DELETE FROM Vehicule WHERE ID = ?";

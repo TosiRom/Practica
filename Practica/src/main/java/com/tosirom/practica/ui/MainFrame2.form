@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="706" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="454" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -37,7 +37,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Component class="com.tosirom.practica.ui.panels.FormAngajati" name="formAngajati2">
+        <Component class="com.tosirom.practica.ui.panels.FormAngajati" name="formAngajati1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Angajati">
@@ -46,7 +46,16 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.tosirom.practica.ui.panels.FormClienti" name="formClienti2">
+        <Component class="com.tosirom.practica.ui.panels.FormCamere" name="formCamere1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Camere">
+                <Property name="tabTitle" type="java.lang.String" value="Camere"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="com.tosirom.practica.ui.panels.FormClienti" name="formClienti1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Clienti">
@@ -55,7 +64,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.tosirom.practica.ui.panels.FormInchirieri" name="formInchirieri2">
+        <Component class="com.tosirom.practica.ui.panels.FormInchirieri" name="formInchirieri1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Inchirieri">
@@ -64,16 +73,38 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.tosirom.practica.ui.panels.FormInventar" name="formInventar2">
+        <Component class="com.tosirom.practica.ui.panels.FormInventarCamera" name="formInventarCamera1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Inventar">
-                <Property name="tabTitle" type="java.lang.String" value="Inventar"/>
+              <JTabbedPaneConstraints tabName="InvetarCamera">
+                <Property name="tabTitle" type="java.lang.String" value="InvetarCamera"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.tosirom.practica.ui.panels.FormProduse" name="formProduse2">
+        <Container class="com.tosirom.practica.ui.panels.FormPlati" name="formPlati1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Plati">
+                <Property name="tabTitle" type="java.lang.String" value="Plati"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="706" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="419" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Component class="com.tosirom.practica.ui.panels.FormProduse" name="formProduse1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Produse">
@@ -82,11 +113,11 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.tosirom.practica.ui.panels.FormCamere" name="formCamere1">
+        <Component class="com.tosirom.practica.ui.panels.FormVehicule" name="formVehicule1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab6">
-                <Property name="tabTitle" type="java.lang.String" value="tab6"/>
+              <JTabbedPaneConstraints tabName="Vehicule">
+                <Property name="tabTitle" type="java.lang.String" value="Vehicule"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

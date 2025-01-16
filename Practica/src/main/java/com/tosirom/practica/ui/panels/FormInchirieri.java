@@ -49,7 +49,7 @@ public class FormInchirieri extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmbClienti = new javax.swing.JComboBox<>();
-        cmbProdus = new javax.swing.JComboBox<>();
+        cmbCamere = new javax.swing.JComboBox<>();
         dateInchiriere = new com.toedter.calendar.JDateChooser();
         dateReturnare = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
@@ -99,13 +99,18 @@ public class FormInchirieri extends javax.swing.JPanel {
 
         jLabel2.setText("ID Client");
 
-        jLabel3.setText("ID Produs");
+        jLabel3.setText("ID Camera");
 
         jLabel4.setText("Data Inchiriere");
 
         cmbClienti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmbProdus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCamere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCamere.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCamereActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Data Returnare");
 
@@ -154,7 +159,7 @@ public class FormInchirieri extends javax.swing.JPanel {
                             .addComponent(chkReturnat)
                             .addComponent(dateReturnare, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbClienti, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbProdus, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbCamere, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateInchiriere, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -167,7 +172,7 @@ public class FormInchirieri extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbProdus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCamere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -214,7 +219,7 @@ public class FormInchirieri extends javax.swing.JPanel {
 
     private void resetForm() {
         cmbClienti.setSelectedIndex(0);
-        cmbProdus.setSelectedIndex(0);
+        cmbCamere.setSelectedIndex(0);
         dateInchiriere.setDate(new Date(System.currentTimeMillis()));
         dateReturnare.setDate(new Date(System.currentTimeMillis()));
         chkReturnat.setSelected(false);
@@ -236,14 +241,14 @@ public class FormInchirieri extends javax.swing.JPanel {
         }
          
          try(Connection conn = Database.getConnection()) {
-            String SQL_clienti = "SELECT ID FROM Produse";
+            String SQL_clienti = "SELECT ID FROM Camere";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(SQL_clienti);
             
-            cmbProdus.removeAllItems();
+            cmbCamere.removeAllItems();
             while (result.next()) {
                 Integer id = result.getInt("ID");
-                cmbProdus.addItem(id.toString());
+                cmbCamere.addItem(id.toString());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -262,7 +267,7 @@ public class FormInchirieri extends javax.swing.JPanel {
         Inchirieri i = new Inchirieri();
         
         i.ID_Client = Integer.parseInt((String)cmbClienti.getSelectedItem());
-        i.ID_Produs = Integer.parseInt((String)cmbProdus.getSelectedItem());
+        i.ID_Camera = Integer.parseInt((String)cmbCamere.getSelectedItem());
         i.Data_inchiriere = new Date(dateInchiriere.getDate().getTime());
         i.Data_returnare = new Date(dateReturnare.getDate().getTime());
         i.Returnat = chkReturnat.isSelected();
@@ -272,6 +277,10 @@ public class FormInchirieri extends javax.swing.JPanel {
         }
         RefreshInchirieriTable();
     }//GEN-LAST:event_btnChangeActionPerformed
+
+    private void cmbCamereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCamereActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCamereActionPerformed
 
         private void RefreshInchirieriTable() {
         populateDropdowns();
@@ -301,8 +310,8 @@ public class FormInchirieri extends javax.swing.JPanel {
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox chkReturnat;
+    private javax.swing.JComboBox<String> cmbCamere;
     private javax.swing.JComboBox<String> cmbClienti;
-    private javax.swing.JComboBox<String> cmbProdus;
     private com.toedter.calendar.JDateChooser dateInchiriere;
     private com.toedter.calendar.JDateChooser dateReturnare;
     private javax.swing.JLabel jLabel2;

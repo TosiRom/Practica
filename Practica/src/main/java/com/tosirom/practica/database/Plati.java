@@ -81,7 +81,7 @@ public class Plati {
 
         return plata;
     }
-    public static boolean CreateIPlati(Plati in) {
+    public static boolean CreatePlati(Plati in) {
         try (Connection conn = Database.getConnection()) {
             String SQL = "INSERT INTO Plati (ID,Suma,Metoda,Data,ID_Inchiriere) VALUES (?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(SQL);

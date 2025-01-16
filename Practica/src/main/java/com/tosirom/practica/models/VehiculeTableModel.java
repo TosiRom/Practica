@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class VehiculeTableModel extends AbstractTableModel {
-    protected static String[] COLUMN_NAMES = {"ID", "Numar Inmatriculare", "ID Client", "Marca/Model Vehicul"};
+    protected static String[] COLUMN_NAMES = {"ID", "Numar Inmatriculare", "ID Client", "Marca_Model_Vehicul"};
     protected static Class[] COLUMN_CLASSES = {Integer.class, String.class, Integer.class, String.class};
 
     private List<Vehicule> vehicule;

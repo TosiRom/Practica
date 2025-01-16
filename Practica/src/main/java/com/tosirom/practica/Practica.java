@@ -7,7 +7,7 @@ package com.tosirom.practica;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.tosirom.practica.ui.LoginFrame;
 
-import com.tosirom.practica.ui.MainFrame;
+import com.tosirom.practica.ui.MainFrame2;
 
 
 /**
@@ -22,7 +22,7 @@ public class Practica {
 //        LoginFrame lf = new LoginFrame();
 //        lf.setVisible(true);
         
-        MainFrame mf = new MainFrame();
+        MainFrame2 mf = new MainFrame2();
         
         mf.setVisible(true);
     }
