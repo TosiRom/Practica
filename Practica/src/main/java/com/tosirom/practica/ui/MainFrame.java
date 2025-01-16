@@ -34,6 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
         formInventar2 = new com.tosirom.practica.ui.panels.FormInventar();
         formProduse2 = new com.tosirom.practica.ui.panels.FormProduse();
         formCamere1 = new com.tosirom.practica.ui.panels.FormCamere();
+        formVehicule1 = new com.tosirom.practica.ui.panels.FormVehicule();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +43,8 @@ public class MainFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Inchirieri", formInchirieri2);
         jTabbedPane1.addTab("Inventar", formInventar2);
         jTabbedPane1.addTab("Produse", formProduse2);
-        jTabbedPane1.addTab("tab6", formCamere1);
+        jTabbedPane1.addTab("Camere", formCamere1);
+        jTabbedPane1.addTab("Vehicule", formVehicule1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +105,7 @@ public class MainFrame extends javax.swing.JFrame {
     private com.tosirom.practica.ui.panels.FormInchirieri formInchirieri2;
     private com.tosirom.practica.ui.panels.FormInventar formInventar2;
     private com.tosirom.practica.ui.panels.FormProduse formProduse2;
+    private com.tosirom.practica.ui.panels.FormVehicule formVehicule1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
