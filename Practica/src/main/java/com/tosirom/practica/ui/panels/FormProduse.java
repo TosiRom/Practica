@@ -5,7 +5,7 @@
 package com.tosirom.practica.ui.panels;
 
 import com.tosirom.practica.database.Produse;
-import com.tosirom.practica.models.ProductTableModel;
+import com.tosirom.practica.models.ProduseTableModel;
 import javax.swing.RowSorter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -247,7 +247,7 @@ public class FormProduse extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        ProductTableModel model = (ProductTableModel) tabelProduse.getModel();
+        ProduseTableModel model = (ProduseTableModel) tabelProduse.getModel();
 
         int[] selRows = tabelProduse.getSelectedRows();
 
@@ -290,12 +290,10 @@ public class FormProduse extends javax.swing.JPanel {
         // TODO add your handling code here:
         Produse p = new Produse();
         
-        p.Tip = (String)cmbTip.getSelectedItem();
-        p.Titlu = txtTitlu.getText();
-        p.Gen = (String)cmbGen.getSelectedItem();
-        p.An_Lansare = (Integer)intAnLansare.getValue();
-        p.Pret_Inchiriere = Integer.parseInt(txtPret.getText());
-        p.Disponibil = chkDisponibil.isSelected();
+        p.ID = (Integer)intID.getValue();
+        p.Denumire = txtDenumire.getText(); 
+        p.Pret = Double.parseDouble(txtPret.getText());
+        
         
         if (Produse.CreateProduse(p)) {
             resetForm();
@@ -305,7 +303,7 @@ public class FormProduse extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChangeActionPerformed
 
     private void RefreshProductsTable() {
-        ProductTableModel model = new ProductTableModel();
+        ProduseTableModel model = new ProduseTableModel();
         
         tabelProduse.setModel(model);
         
